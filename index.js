@@ -43,7 +43,7 @@ app.use(router.delete("/deleteEmpHoliday",urlencodedParser,holiCont.delete));
 
 app.use(router.post("/returnEmp",urlencodedParser,empCont.Return));
 
-const port = process.env.PORT || 8080;
+const port = 5000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}.`);
   });
