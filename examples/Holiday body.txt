@@ -1,0 +1,5 @@
+{
+    "holiday_ID":25698,
+    "holidayFrom":"1/02/2022",
+    "holidayTo":"1/12/2022"
+}

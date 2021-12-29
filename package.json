@@ -1,0 +1,24 @@
+{
+  "name": "universitypayroll",
+  "version": "1.0.0",
+  "description": "University Payroll System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apidevtools/swagger-express-middleware": "^4.0.2",
+    "body-parser": "^1.19.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "flatted": "^3.2.4",
+    "github": "^14.0.0",
+    "mongodb": "^4.2.2",
+    "mongoose": "^6.1.2"
+  },
+  "devDependencies": {
+    "@types/swagger-ui-express": "^4.1.3"
+  }
+}
