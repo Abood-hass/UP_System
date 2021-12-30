@@ -11,10 +11,10 @@ exports.salCalculator = function (empBody,salBody) {
         let finalSalary;
         let taxPercentage = (salBody.taxPercentage);
 
-        if(empBody.typeOfEmp === "ca"){
+        if(empBody.typeOfEmp === "tf"){
             thePrice = salBody.payPrice;
             finalSalary = wHours * thePrice;
-        }else if(empBody.typeOfEmp === "tf"){
+        }else if(empBody.typeOfEmp === "ca"){
             thePrice = salBody.payPrice;
             finalSalary = wHours * thePrice * hourWork * taxPercentage;
         }else{console.log("try again")}
