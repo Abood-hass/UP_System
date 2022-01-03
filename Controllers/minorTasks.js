@@ -1,5 +1,9 @@
 const holiDate = require("../Models/holiDate");
-const employee = require("../Models/managers");
+const managers = require("../Models/employees");
+const employee = require("../Models/employees");
+const salaryCard = require("../Models/salaryCard");
+let {casualTypeEmp, fullTimeTypeEmp} = require('../Controllers/configVariable/enumTypeValues');
+
 
 exports.salCalculator = function (empBody,salBody) {
     try{
@@ -11,9 +15,9 @@ exports.salCalculator = function (empBody,salBody) {
         let finalSalary;
         let taxPercentage = (salBody.taxPercentage);
 
-        if(empBody.typeOfEmp === "tf"){
+        if(empBody.typeOfEmp === fullTimeTypeEmp()){
             finalSalary = salBody.netSalary;
-        }else if(empBody.typeOfEmp === "ca"){
+        }else if(empBody.typeOfEmp === casualTypeEmp()){
             thePrice = salBody.payPrice;
             finalSalary = wHours * thePrice * hourWork * taxPercentage;
         }else{console.log("try again")}
@@ -98,4 +102,73 @@ exports.counterOfSatdaysAndFridays = (year, month) => {
         date = new Date(year, month, day);
     }
     return counter;
+}
+
+exports.calculatorNetSalary = async (theOneEmpID) =>{
+    
+    const nowDate = new Date(Date.now());
+    const payMonth = nowDate.getMonth() - 1; 
+    const payYear = nowDate.getFullYear() - 1; 
+    const weekend = this.counterOfSatdaysAndFridays( new Date(payYear),  new Date(payMonth))
+    const oneMangr = await managers.findOne({"emp_ID": theOneEmpID});
+    console.log ("EMP: "+oneMangr)
+// MangsArray.push(allManagers);
+// allManagers.map( async (oneMangr) => {
+    // console.log(casualTypeEmp())
+    let SalCard = await salaryCard.findOne({"_id": oneMangr.empTypeID});;
+    if(oneMangr.typeOfEmp === casualTypeEmp()){
+        
+    let HoliCard = await holiDate.findOne({"_id": oneMangr.holiDateID});
+    
+    const HDateFrom = new Date(HoliCard.holiDateFrom);
+    const HDateTo = new Date(HoliCard.holiDateTo);
+    if(HDateFrom.getMonth() === payMonth && HoliCard.requestStatus === "accepted"){
+        console.log("check here");
+        var Difference_In_Days=0;
+        if(oneMangr.empTypeID == casualTypeEmp()){
+            console.log("one casual here") 
+        var daysInMonth = new Date(nowDate.getFullYear(), nowDate.getMonth(), 0).getDate();
+
+        var Difference_In_Time = HDateTo.getTime()  - HDateFrom.getTime() ;
+
+         Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+        }else if(oneMangr.typeOfEmp === fullTimeTypeEmp()){
+            console.log("one full time");
+            var totalOfHolidays = 
+            (weekend);
+    
+            await salaryCard.findByIdAndUpdate(
+                {"_id": oneMangr.empTypeID},
+                {"contOfHolidays": totalOfHolidays,
+                "contOfWorkDays":(daysInMonth - totalOfHolidays)}
+                )
+                // console.log(oneMangr);
+                // await MangsArray.push(oneMangr + SalCard + HoliCard);
+                 
+                 i+=1;
+        }
+    }
+        var totalOfHolidays = 
+        (Difference_In_Days + weekend);
+
+        await salaryCard.findByIdAndUpdate(
+            {"_id": oneMangr.empTypeID},
+            {"contOfHolidays": totalOfHolidays,
+            "contOfWorkDays":(daysInMonth - totalOfHolidays)}
+            )
+            // console.log(oneMangr);
+            //  var empNum = `emp${i}`
+            //  finalResult = {empNum : [{
+            //      'Presonal Info': MangsArray[i],
+            //      'The Salary Info': MangsArray[i+1],
+            //      'The Last Holiday Info': MangsArray[i+2],
+            //  }]};
+            // console.log(MangsArray[0], MangsArray[1]);
+            
+            // i+=1;
+    }
+console.log("finished");
+// });
+return oneMangr;
+
 }

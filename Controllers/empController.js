@@ -1,4 +1,4 @@
-const employee = require("../Models/managers");
+const employee = require("../Models/employees");
 var ObjectId = require('mongodb').ObjectId;
 const archiveEmps = require("../Models/archiveEmps");
 // const fullTimeEmp = require("../Models/fullTimeEmp");

@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 
 
 const mongoose = require('mongoose');
-const { payForPreMonth } = require('./Controllers/monthlyPay');
+const { payForPreMonthAllEmps, payForPreMonthOneEmp} = require('./Controllers/monthlyPay');
 mongoose.connect(dbConfig.url).then(() => {
     console.log("Connected to the database!");
 });
@@ -47,7 +47,9 @@ app.use(router.delete("/deleteEmpHoliday",urlencodedParser,holiCont.delete));
 
 app.use(router.post("/returnEmp",urlencodedParser,empCont.Return));
 
-app.use(router.post("/payEmp",urlencodedParser,payForPreMonth));
+app.use(router.post("/payAllEmps",urlencodedParser,payForPreMonthAllEmps));
+
+app.use(router.post("/payOneEmp",urlencodedParser,payForPreMonthOneEmp));
 
 const port = 5000;
 app.listen(port, () => {

@@ -1,5 +1,5 @@
 const holiDate = require("../Models/holiDate");
-const employee = require("../Models/managers");
+const employee = require("../Models/employees");
 const { holidayInserter } = require("./minorTasks");
 
 
