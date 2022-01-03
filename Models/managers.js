@@ -11,55 +11,73 @@ let type = ["ca","ft"];
 
 const employee = new schema({
     emp_ID: {type:Number,required: true, unique: true}
-    // {
-    //     typy:  Number,
-    //     validate: {
-    //       validator: function (v) {
-    //         return (
-    //           v && // check that there is a date object
-    //           v > topLimitId &&
-    //           v < buttomLimit
-    //         );
-    //       },
-    //       message:
-    //         "error.id.wrong.rang",
-        
-    //       }
-    // }
+    ,
+    password: {type:String, required: true, unique: true,
+      validate: {
+          validator: function (v) {
+            return (
+              v && // check that there is a date object
+              v.toString().length < 30 &&
+              v.toString().length > 15 
+            );
+          },
+          message:
+            "error.password.wrong.insertion",
+        }}
+    ,
+    email: {type:String, required: true}    
+    ,
+    jobTitle: {type:String, required: true}    
     ,
     
+    address: {type:String, required: true ,
+      validate: {
+        validator: function (v) {
+          return (
+            v && // check that there is a date object
+            v.toString().length > 20 
+          );
+        },
+        message:
+          "error.address.wrong.insertion",
+      }
+    }  
+    
+    ,
+    phoneNumber_1: {type:Number, required: true,
+      validate: {
+        validator: function (v) {
+          return (
+            v && // check that there is a date object
+            v.toString().length > 10 
+          );
+        },
+        message:
+          "error.phoneNumber.wrong.range",
+      }
+    }   
+    
+    ,
+
+    phoneNumber_2: {type:Number, required: false,
+      validate: {
+        validator: function (v) {
+          return (
+            v && // check that there is a date object
+            v.toString().length > 10 
+          );
+        },
+        message:
+          "error.phoneNumber.wrong.range",
+      }
+    }   
+    ,
     Fname: {type:String,required: true}
-    // {
-    //     typy:  String,
-    //     validate: {
-    //       validator: function (v) {
-    //         return (
-    //           v && // check that there is a date object
-    //           v.length > 10 &&
-    //           v.length < 2
-    //         );
-    //       },
-    //       message:
-    //         "error.fname.wrong.long",
-    //       }
-    // }
+
     ,
     
     Lname: {type:String,required: true}
-    // {
-    //     typy: {typy: String},
-    //     validate: {
-    //       validator: function (v) {
-    //         return (
-    //           v && // check that there is a date object
-    //           v.length > 10 &&
-    //           v.length < 2
-    //         );
-    //       },
-    //       message:
-    //         "error.lname.wrong.long",
-    //       }
-    // }
+
     ,
 
     // name: this.Fname + Lname,

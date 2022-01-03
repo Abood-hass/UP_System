@@ -10,8 +10,12 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: true })
 app.use(bodyParser.json())
 
+// app.use(require('dotenv').config())
+
+
 
 const mongoose = require('mongoose');
+const { payForPreMonth } = require('./Controllers/monthlyPay');
 mongoose.connect(dbConfig.url).then(() => {
     console.log("Connected to the database!");
 });
@@ -42,6 +46,8 @@ app.use(router.delete("/deleteEmp",urlencodedParser,empCont.delete));
 app.use(router.delete("/deleteEmpHoliday",urlencodedParser,holiCont.delete));
 
 app.use(router.post("/returnEmp",urlencodedParser,empCont.Return));
+
+app.use(router.post("/payEmp",urlencodedParser,payForPreMonth));
 
 const port = 5000;
 app.listen(port, () => {

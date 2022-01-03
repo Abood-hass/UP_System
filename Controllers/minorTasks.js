@@ -1,5 +1,5 @@
 const holiDate = require("../Models/holiDate");
-const employee = require("../Models/employee");
+const employee = require("../Models/managers");
 
 exports.salCalculator = function (empBody,salBody) {
     try{
@@ -12,8 +12,7 @@ exports.salCalculator = function (empBody,salBody) {
         let taxPercentage = (salBody.taxPercentage);
 
         if(empBody.typeOfEmp === "tf"){
-            thePrice = salBody.payPrice;
-            finalSalary = wHours * thePrice;
+            finalSalary = salBody.netSalary;
         }else if(empBody.typeOfEmp === "ca"){
             thePrice = salBody.payPrice;
             finalSalary = wHours * thePrice * hourWork * taxPercentage;
@@ -82,4 +81,21 @@ return finalResult;
 }catch(error){
     finalResult = error.message;
 }
+}
+
+exports.counterOfSatdaysAndFridays = (year, month) => {
+
+    var day, counter, date;
+
+    day = 1;
+    counter = 0;
+    date = new Date(year, month, day);
+    while (date.getMonth() === month) {
+        if (date.getDay() === 6 || date.getDay() === 5) { // Sun=0, Mon=1, Tue=2, etc.
+            counter += 1;
+        }
+        day += 1;
+        date = new Date(year, month, day);
+    }
+    return counter;
 }

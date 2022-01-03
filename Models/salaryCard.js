@@ -16,7 +16,8 @@ const salaryCard = new schema({
     hourWork:{type:Number},
     taxPercentage:{type:Number},
     typeOfEmp:{ type: String, enum: type,required: true},
-    netSalary:{type:Number}
+    netSalary:{type:Number, required: true},
+    sumOfSalary:{type:Number, required: true}
 });
 
 module.exports  = mongoose.model('salaryCard', salaryCard);

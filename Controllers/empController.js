@@ -1,4 +1,4 @@
-const employee = require("../Models/employee");
+const employee = require("../Models/managers");
 var ObjectId = require('mongodb').ObjectId;
 const archiveEmps = require("../Models/archiveEmps");
 // const fullTimeEmp = require("../Models/fullTimeEmp");
@@ -9,7 +9,6 @@ exports.create = async (req, res) => {
     try{
     var empBody= req.body.employee;
     var salBody= req.body.salaryCard;
-    var holidayBody= req.body.holidayList;
     let finalSalary = salCalculator(empBody,salBody, res);
 
     let newSal =
