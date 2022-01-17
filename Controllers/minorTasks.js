@@ -11,20 +11,20 @@ const nodemailer = require("nodemailer");
 let {casualTypeEmp, fullTimeTypeEmp} = require('../Controllers/configVariable/enumTypeValues');
 
 
-exports.salCalculator = function (empBody,salBody) {
+exports.salCalculator = function (empBody) {
     try{
-        let hourWork = salBody.hourWork;
+        let hourWork = empBody.hourWork;
         var wHours = 
-            salBody.contOfWorkDays - salBody.contOfHolidays;
+            empBody.contOfWorkDays - empBody.contOfHolidays;
         let thePrice;
         // // console.log(thePrice);
         let finalSalary;
-        let taxPercentage = (salBody.taxPercentage);
+        let taxPercentage = (empBody.taxPercentage);
 
         if(empBody.typeOfEmp === fullTimeTypeEmp()){
-            finalSalary = salBody.netSalary;
+            finalSalary = empBody.netSalary;
         }else if(empBody.typeOfEmp === casualTypeEmp()){
-            thePrice = salBody.payPrice;
+            thePrice = empBody.payPrice;
             finalSalary = wHours * thePrice * hourWork * taxPercentage;
         }else{// console.log("try again")
         }

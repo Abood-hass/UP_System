@@ -1,15 +1,18 @@
 const { salCalculator } = require("../../Controllers/minorTasks");
 const employees = require("../../Models/employees");
 const salaryCard = require("../../Models/salaryCard");
+const alert = require('alert');
 
 exports.create = async (req, res) => {
     try{
     var empBody= req.body;
     // var salBody= req.body.salaryCard;
-    let finalSalary = salCalculator(empBody,salBody, res);
-        const empTypID = empBody;
-
-    let newSal =
+    let finalSalary = salCalculator(empBody);
+        // const empTypID = empBody;
+console.log(empBody);
+console.log("hi");
+return res.redirect('http://localhost:5000/addNewEmp');
+    let newEmp =
         {
             "emp_ID":empBody.id,
             "Fname":empBody.Fname,
@@ -17,24 +20,30 @@ exports.create = async (req, res) => {
             "dob":empBody.dob,
             "doh":empBody.doh,
             "password":empBody.password,
-            "email":empBody.Email,
-            "phoneNumber_1":empBody.phone1,
-            "phoneNumber_2":empBody.phone2,
+            "email":empBody.email,
+            "phoneNumber_1":empBody.phoneNumber_1,
+            "phoneNumber_2":empBody.phoneNumber_2,
             "address":empBody.address,
-            "dateOfPay":salBody.dateOfPay,
-            "contOfWorkDays":salBody.contOfWorkDays,
-            "contOfHolidays":0,
-            "payPrice": salBody.payPrice,
-            "hourWork": salBody.hourWork,
-            "taxPercentage": salBody.taxPercentage,
-            "typeOfEmp":empBody.typeOfEmp,
-            "netSalary":finalSalary,
+            "dateOfPay":empBody.dateOfPay,
+            
+            
+            
         };
-
-    const newEpm = await employees(empBody).save();
-    const newSC = await salaryCard(newSal).save();
-    res.send(newEpm+newSC);
+        const newSal =
+        {
+        dateOfPay:"",
+        "contOfWorkDays":empBody.contOfWorkDays,
+        "contOfHolidays":0,
+        "payPrice": empBody.payPrice,
+        "hourWork": empBody.hourWork,
+        "taxPercentage": empBody.taxPercentage,
+        "typeOfEmp":empBody.typeOfEmp,
+        "netSalary":finalSalary,
+        }
+    // const newEpm = await employees(empBody).save();
+    // const newSC = await salaryCard(newSal).save();
+    // res.send(newEpm+newSC);
     } catch (error) {
-        res.json(error.message,200);
+        alert(`Make sure to insert all info Correctly \n code Error: ${error.message}`)
     }
 }

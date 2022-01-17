@@ -103,7 +103,7 @@ input::-webkit-inner-spin-button {
       margin-top: 20px;
       text-align: center;
       }
-      button {
+      #submit {
       width: 150px;
       padding: 10px;
       border: none;      
@@ -163,11 +163,11 @@ input::-webkit-inner-spin-button {
           <p>Address</p>
           <input type="text" name="address" placeholder="address"/>
           <p>Email</p>
-          <input type="text" name="Email"/>
+          <input type="text" name="email"/>
           <p>Phone Number(s)</p>
           <div class="city-item">
-          <input type="text" name="phone1" placeholder="phone 1"/>
-          <input type="text" name="phone2" placeholder="phone 2 (optional)"/>
+          <input type="text" name="phoneNumber_1" placeholder="phone 1"/>
+          <input type="text" name="phoneNumber_2" placeholder="phone 2 (optional)"/>
         </div>
          
           </div>
@@ -181,7 +181,7 @@ input::-webkit-inner-spin-button {
             <p>Employment date (usually left blank and taking data entry date)</p>
           <input type="date" name="doh"/>
             <p>Job Title</p>          
-            <input type="text" name="Email"/>
+            <input type="text" name="jobTitle"/>
             <p>Type of Employement</p>
               <select name="typeOfEmp">
                 <option value="">(Can Only be One)</option>
@@ -195,7 +195,7 @@ input::-webkit-inner-spin-button {
           <i class="fas fa-calendar-alt"></i>
         </div>
         <div class="btn-block">
-          <button type="submit" href="/">SEND</button>
+          <input type="submit" id="submit" value="Send">
         </div>
       </form>
     </div>

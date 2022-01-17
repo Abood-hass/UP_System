@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { casualTypeEmp, fullTimeTypeEmp } = require('../Controllers/configVariable/enumTypeValues');
+const { Male, Female } = require('../Controllers/configVariable/GenderOfEmployee');
 var ObjectId = mongoose.ObjectId;
 const schema = mongoose.Schema;
 const dbConfig = require("../dbModule");
@@ -7,6 +8,7 @@ mongoose.connect(dbConfig.url);
 
 // let topLimitId = Math.pow(10,10);
 // let buttomLimit = Math.pow(10,8);
+let Gender = [Female(), Male()]
 
 let type = [casualTypeEmp(),fullTimeTypeEmp()]; 
 
@@ -80,6 +82,8 @@ const employee = new schema({
     Lname: {type:String,required: true}
 
     ,
+
+    Gender:{ type: String, enum: Gender,required: true },
 
     // name: this.Fname + Lname,
 
