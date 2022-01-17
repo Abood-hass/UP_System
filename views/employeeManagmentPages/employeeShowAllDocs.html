@@ -1,0 +1,38 @@
+
+<html lang="en">
+  <meta charset="utf-8"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+<script nomodule  type="text/javascript" src="showAll.js"></script>
+<h2>Responsive Table with RWD-Table-Patterns</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive" data-pattern="priority-columns">
+        <table id="tableID" summary="This table shows how to create responsive tables using RWD-Table-Patterns' functionality" class="table table-bordered table-hover">
+          <!-- <caption class="text-center">An example of a responsive table based on RWD-Table-Patterns' <a href="http://gergeo.se/RWD-Table-Patterns/" target="_blank"> solution</a>:</caption> -->
+            <tr>
+              <th>Name</th>
+              <th>Academic ID</th>
+              <th data-priority="1">Email</th>
+              <th data-priority="2">Phone Number</th>
+              <th data-priority="3">Employment type</th>
+            </tr>
+            <tr  >
+                <th>PAGE</th>
+                <th>SCRIPTS</th>
+            </tr>
+        </table>
+          <tfoot>
+            <tr>
+              <a href="http://localhost:5000/addNewEmp">Add New Employee</a> </tr>
+          </tfoot>
+        </table>
+      </div><!--end of .table-responsive-->
+    </div>
+  </div>
+</div>
+
+<!-- <p class="p">Demo by George Martsoukos. <a href="http://www.sitepoint.com/responsive-data-tables-comprehensive-list-solutions" target="_blank">See article</a>.</p> -->

@@ -4,32 +4,26 @@ const schema = mongoose.Schema;
 const dbConfig = require("../dbModule");
 mongoose.connect(dbConfig.url);
 
-const admin =  new schema({
-    admin_ID: {type:Number,required: true, unique: true,
-        validate: {
-            validator: function (v) {
-              return (
-                v && // check that there is a date object
-                v.toString().length === 10
-              );
-            },
-            message:
-              "error.admin_ID.wrong.insertion",
-          }
-        }
+// let topLimitId = Math.pow(10,10);
+// let buttomLimit = Math.pow(10,8);
+
+// let type = [casualTypeEmp(),fullTimeTypeEmp()]; 
+
+const admin = new schema({
+    admin_ID: {type:Number,required: true, unique: true}
     ,
     password: {type:String, required: true, unique: true,
-        validate: {
-            validator: function (v) {
-              return (
-                v && // check that there is a date object
-                v.toString().length < 30 &&
-                v.toString().length > 15 
-              );
-            },
-            message:
-              "error.password.wrong.insertion",
-          }}
+      validate: {
+          validator: function (v) {
+            return (
+              v && // check that there is a date object
+              v.toString().length < 30 &&
+              v.toString().length > 15 
+            );
+          },
+          message:
+            "error.password.wrong.insertion",
+        }}
     ,
     email: {type:String, required: true}    
     ,
@@ -37,30 +31,30 @@ const admin =  new schema({
     ,
     
     address: {type:String, required: true ,
-      validate: {
-        validator: function (v) {
-          return (
-            v && // check that there is a date object
-            v.toString().length > 20 
-          );
-        },
-        message:
-          "error.address.wrong.insertion",
-      }
+      // validate: {
+      //   validator: function (v) {
+      //     return (
+      //       v && // check that there is a date object
+      //       v.toString().length > 20 
+      //     );
+      //   },
+      //   message:
+      //     "error.address.wrong.insertion",
+      // }
     }  
     
     ,
     phoneNumber_1: {type:Number, required: true,
-      validate: {
-        validator: function (v) {
-          return (
-            v && // check that there is a date object
-            v.toString().length > 10 
-          );
-        },
-        message:
-          "error.phoneNumber.wrong.range",
-      }
+      // validate: {
+      //   validator: function (v) {
+      //     return (
+      //       v && // check that there is a date object
+      //       v.toString().length > 9 
+      //     );
+      //   },
+      //   message:
+      //     "error.phoneNumber.wrong.range",
+      // }
     }   
     
     ,
@@ -117,8 +111,7 @@ const admin =  new schema({
             "error.doh.wrong.range",
           }
     },
-    typeOfEmp:{ type: String, enum: type,required: true },
-    empTypeID: {type:ObjectId,required: true},
+    holiDateID: {type:ObjectId,required: true},
   //   {
   //     type: mongoose.Schema.Types.ObjectId, 
   //     ref: 'salaryCard'
@@ -127,5 +120,5 @@ const admin =  new schema({
 }, { minimize: false })
 
 
-module.exports = mongoose.model("admin", admin);
 
+module.exports = mongoose.model('admin', admin);
