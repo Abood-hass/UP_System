@@ -70,7 +70,7 @@ app.use(router.get("/addNewEmp",urlencodedParser,(req, res, next) => {
     res.sendFile(__dirname+'/views/employeeManagmentPages/addNewEmpPage.html')
 }));
 
-
+app.use(router.get("/",urlencodedParser,()=>{})
 app.use(router.get("/Login_as_Admin",urlencodedParser,
 (req, res, next) => {
     res.sendFile(__dirname+'/views/adminLoginPageSetion/loginAdminPage.html')
