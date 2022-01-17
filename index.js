@@ -80,7 +80,8 @@ app.use(router.get("/",urlencodedParser,(req, res, next) => {
 }));
 app.use(router.get("/",urlencodedParser,
 (req, res, next) => {
-    res.sendFile(__dirname+'/views/adminLoginPageSetion/loginAdminPage.html')
+    res.send("Hello")
+    // res.sendFile(__dirname+'/views/adminLoginPageSetion/loginAdminPage.html')
 }
 ));
 
