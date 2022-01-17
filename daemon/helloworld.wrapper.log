@@ -1,0 +1,4 @@
+2022-01-17 16:28:10 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\DELL\Documents\GitHub\webBug\UP_System\node_modules\node-windows\lib\wrapper.js --file C:\Users\DELL\Documents\GitHub\webBug\UP_System\StartupCode.js --scriptoptions= --log "Hello World wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2022-01-17 16:28:10 - Started 4668
+2022-01-17 16:30:56 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\DELL\Documents\GitHub\webBug\UP_System\node_modules\node-windows\lib\wrapper.js --file C:\Users\DELL\Documents\GitHub\webBug\UP_System\StartupCode.js --scriptoptions= --log "Hello World wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2022-01-17 16:30:56 - Started 3232

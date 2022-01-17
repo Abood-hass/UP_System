@@ -1,6 +1,8 @@
+const { start } = require('./StartupCode');
 
 try{
     const express = require('express');
+    const res = express.response;
 // const views = require('./')
 const app = express();
 const dbConfig = require("./dbModule");
@@ -10,6 +12,7 @@ const showAll = require("./views/employeeManagmentPages/showAll")
 const holiCont = require("./Controllers/holidayController");
 const http = require('http');
 const path = require('path');
+var Service = require('node-windows').Service;
 // import loginPage from'./views/adminLoginPageSetion/loginAdminPage.html';
 app.use(express.static(__dirname + '/loginAdminPage.html'));
 var bodyParser = require('body-parser')
@@ -75,7 +78,7 @@ app.use(router.get("/addNewEmp",urlencodedParser,(req, res, next) => {
 app.use(router.get("/",urlencodedParser,(req, res, next) => {
     res.sendFile(__dirname+'/views/adminLoginPageSetion/loginAdminPage.html')
 }));
-app.use(router.get("/Login_as_Admin",urlencodedParser,
+app.use(router.get("/",urlencodedParser,
 (req, res, next) => {
     res.sendFile(__dirname+'/views/adminLoginPageSetion/loginAdminPage.html')
 }
@@ -85,12 +88,14 @@ app.use(router.post("/loginFunctionAdmin",urlencodedParser,loginasAdmin));
 
 app.use(router.post("/addnewfunction",urlencodedParser,create));
 
-
+// app.use(start())
 
 const port = 5000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}.`);
   });
+
+
 }catch(err){
     console.log(err)
 }

@@ -19,11 +19,13 @@
     "express": "^4.17.2",
     "flatted": "^3.2.4",
     "follow-redirect-url": "^2.0.1",
+    "fs": "^0.0.1-security",
     "github": "^14.0.0",
     "html": "^1.0.0",
     "mailgun-js": "^0.6.7",
     "mongodb": "^4.2.2",
     "mongoose": "^6.1.2",
+    "node-windows": "^1.0.0-beta.6",
     "nodemailer": "^6.7.2",
     "smtp-server": "^3.9.0",
     "window": "^4.2.7"
