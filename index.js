@@ -64,16 +64,16 @@ app.use(router.post("/payOneEmp",urlencodedParser,payForPreMonthOneEmp));
 app.use(router.post("/email",urlencodedParser,notifyTheEmps));
 
 app.use(router.get("/manageAll",urlencodedParser,(req, res, next) => {
-    res.sendFile(__dirname+'/views/employeeManagmentPages/employeeShowAllDocs.html')
+    res.sendFile('/views/employeeManagmentPages/employeeShowAllDocs.html')
 }));
 app.use(router.get("/addNewEmp",urlencodedParser,(req, res, next) => {
-    res.sendFile(__dirname+'/views/employeeManagmentPages/addNewEmpPage.html')
+    res.sendFile('/views/employeeManagmentPages/addNewEmpPage.html')
 }));
 
 app.use(router.get("/",urlencodedParser,()=>{})
 app.use(router.get("/Login_as_Admin",urlencodedParser,
 (req, res, next) => {
-    res.sendFile(__dirname+'/views/adminLoginPageSetion/loginAdminPage.html')
+    res.sendFile('/views/adminLoginPageSetion/loginAdminPage.html')
 }
 ));
 
