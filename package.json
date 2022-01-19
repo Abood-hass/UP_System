@@ -12,6 +12,7 @@
   "dependencies": {
     "@apidevtools/swagger-express-middleware": "^4.0.2",
     "alert": "^5.0.10",
+    "alert-message": "^0.1.24",
     "body-parser": "^1.19.1",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
@@ -27,6 +28,7 @@
     "mongoose": "^6.1.2",
     "node-windows": "^1.0.0-beta.6",
     "nodemailer": "^6.7.2",
+    "react-alert": "^7.0.3",
     "smtp-server": "^3.9.0",
     "window": "^4.2.7"
   },

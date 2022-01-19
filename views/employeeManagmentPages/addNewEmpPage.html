@@ -54,7 +54,7 @@ input::-webkit-inner-spin-button {
       background: transparent;
       }
       textarea {
-      width: calc(100% - 6px);
+      width: calc(50% - 6px);
       }
       .item {
       position: relative;
@@ -130,10 +130,13 @@ input::-webkit-inner-spin-button {
       .city-item select {
       width: calc(50% - 8px);
       }
+      #ph{
+        width:  50px;
+      }
       }
    
    </style>
-<script nomodule  type="text/javascript" src="addNewEmp.js"></script> 
+<script nomodule  type="text/javascript" src="./../../Controllers/empController.js"></script> 
 </head>
   <body>
     <div class="testbox">
@@ -146,11 +149,17 @@ input::-webkit-inner-spin-button {
             <input type="text" name="Fname" placeholder="First" />
             <input type="text" name="Lname" placeholder="Last" />
           </div>
+          <p>Gender</p>
+          <select name="Gender">
+            <option value="">Male or Female</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
           <p>Date of Birth</p>
-          <input type="date" name="dob"/>
+          <input type="date" max="2002-1-1" min="1940-1-1" name="dob"/>
           <p>Login info (ID and Password)</p>
           <div class="name-item">
-            <input type="number"  inputmode="numeric" name="id" placeholder="Empoyee ID" />
+            <input type="text"  inputmode="numeric" name="id" placeholder="Empoyee ID" />
             <input type="password" name="password" placeholder="Empoyee Password" />
           </div>
           
@@ -166,8 +175,22 @@ input::-webkit-inner-spin-button {
           <input type="text" name="email"/>
           <p>Phone Number(s)</p>
           <div class="city-item">
-          <input type="text" name="phoneNumber_1" placeholder="phone 1"/>
-          <input type="text" name="phoneNumber_2" placeholder="phone 2 (optional)"/>
+            <a>
+            <select id="ph" name="ph1">
+            <option value="059">059</option>
+            <option value="056">056</option>
+          </select>
+          <input type="text"  inputmode="numeric" maxlength="7"  name="phoneNumber_1" placeholder="phone Number 1"/>
+        
+        <!-- </a>
+        <a> -->
+
+           <select id="ph"  name="ph2">
+                <option value="059">059</option>
+                <option value="056">056</option>
+              </select>
+          <input type="text"  inputmode="numeric" maxlength="7"  name="phoneNumber_2" placeholder="phone Number 2 (optional)"/>
+        </a>
         </div>
          
           </div>
@@ -179,18 +202,26 @@ input::-webkit-inner-spin-button {
         <h5>Information about Nature Job</h5>
         <div class="item">
             <p>Employment date (usually left blank and taking data entry date)</p>
-          <input type="date" name="doh"/>
+          <input type="date" value='Today' name="doh"/>
             <p>Job Title</p>          
             <input type="text" name="jobTitle"/>
             <p>Type of Employement</p>
               <select name="typeOfEmp">
                 <option value="">(Can Only be One)</option>
-                <option value="FullTime">Full Time</option>
+                <option value="Full Time">Full Time</option>
                 <option value="Casual">Casual</option>
               </select>
               <p>Count of Wrok Hours</p>
-              <input type="number" max="12" min="5" name="contOfWorkDays">
+              <input type="number" max="12" min="0" value="0" name="contOfWorkDays">
              
+              <p>Price per Hours</p>
+              <input type="number" max="100" min="0" value="0" step="10" name="payPrice">
+
+              
+              <p>The Net Salary</p>
+              <input type="number" max="1000" min="300" step="10" name="netSalart">
+              <p>The Tax (%)</p>
+              <input type="number" max="50" min="0" step="10" name="taxPercentage">
           
           <i class="fas fa-calendar-alt"></i>
         </div>

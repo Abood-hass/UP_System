@@ -21,10 +21,10 @@ exports.loginasAdmin = async (req, res, next) => {
     if(theAdmin == null){
 
         alert("Wrong Inputs")
-        return res.redirect('https://university-payroll-system.herokuapp.com/Login_as_Admin');
+        return res.redirect('http://localhost:5000/');
 
     }else{
-        return res.redirect('https://university-payroll-system.herokuapp.com/manageAll');
+        return res.redirect('http://localhost:5000/manageAll');
         
     }
 // } catch (err) {

@@ -14,18 +14,18 @@ let {casualTypeEmp, fullTimeTypeEmp} = require('../Controllers/configVariable/en
 exports.salCalculator = function (empBody) {
     try{
         let hourWork = empBody.hourWork;
-        var wHours = 
+        var daysOfWork = 
             empBody.contOfWorkDays - empBody.contOfHolidays;
         let thePrice;
         // // console.log(thePrice);
         let finalSalary;
         let taxPercentage = (empBody.taxPercentage);
 
-        if(empBody.typeOfEmp === fullTimeTypeEmp()){
+        if(empBody.typeOfEmp === 'Full Time'){
             finalSalary = empBody.netSalary;
-        }else if(empBody.typeOfEmp === casualTypeEmp()){
+        }else if(empBody.typeOfEmp === 'Casual'){
             thePrice = empBody.payPrice;
-            finalSalary = wHours * thePrice * hourWork * taxPercentage;
+            finalSalary = daysOfWork * thePrice * hourWork * taxPercentage;
         }else{// console.log("try again")
         }
             return finalSalary;

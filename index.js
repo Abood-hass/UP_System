@@ -28,7 +28,7 @@ const mongoose = require('mongoose');
 const { payForPreMonthAllEmps, payForPreMonthOneEmp} = require('./Controllers/monthlyPay');
 const { notifyTheEmps } = require('./Controllers/minorTasks');
 const { loginasAdmin } = require('./views/adminLoginPageSetion/loginAdmin');
-const { create } = require('./views/employeeManagmentPages/addNewEmp');
+const { create } = require('./Controllers/empController');
 mongoose.connect(dbConfig.url).then(() => {
     console.log("Connected to the database!");
 });
@@ -69,7 +69,7 @@ app.use(router.post("/payOneEmp",urlencodedParser,payForPreMonthOneEmp));
 app.use(router.post("/email",urlencodedParser,notifyTheEmps));
 
 app.use(router.get("/manageAll",urlencodedParser,(req, res, next) => {
-    res.sendFile(__dirname+'/views/employeeManagmentPages/employeeShowAllDocs.html')
+    res.sendFile(__dirname+'/views/employeeManagmentPages/giveItTry.html')
 }));
 app.use(router.get("/addNewEmp",urlencodedParser,(req, res, next) => {
     res.sendFile(__dirname+'/views/employeeManagmentPages/addNewEmpPage.html')
@@ -88,6 +88,9 @@ app.use(router.get("/",urlencodedParser,
 app.use(router.post("/loginFunctionAdmin",urlencodedParser,loginasAdmin));
 
 app.use(router.post("/addnewfunction",urlencodedParser,create));
+
+// app.use(router.post("/showAll",urlencodedParser,showAll));
+
 
 // app.use(start())
 

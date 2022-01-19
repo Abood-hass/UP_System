@@ -12,7 +12,7 @@ DateMonth = nowDate.getMonth();
 let type = ["ca","ft"]; 
 
 const salaryCard = new schema({
-    _id:{type:ObjectId,required: true},
+    _id:{type:ObjectId},
     dateOfPay:{type:Date,default:new Date(DateYear, DateMonth, 1)},
     contOfWorkDays:{type:Number,required: true},
     contOfHolidays:{type:Number,default: 0},
@@ -20,7 +20,7 @@ const salaryCard = new schema({
     hourWork:{type:Number},
     taxPercentage:{type:Number},
     typeOfEmp:{ type: String, enum: type,required: true},
-    netSalary:{type:Number, required: true},
+    netSalary:{type:Number},
     sumOfSalary:{type:Number, default: 0}
 });
 
