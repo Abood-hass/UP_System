@@ -126,12 +126,136 @@ exports.getOneById = async (req, res) => {
 
 exports.getAll = async (req, res, next) => {
     const all = await employee.find({})
-    res.send(all);
+    console.log(all)
+    let arr = [];
+    arr.push(all)           
+    let Header = ["#", "ID",  "Name", "Type Of Employment"];
+    let col1 = [];
+    let col2 = [];
+    let col3 = [];
+    let col4 = [];
+    // console.log(arr)
+    for (var i = 0; i < arr.length; i++){
+        var obj = arr[i];
+        for (let index = 0; index < obj.length; index++) {
+
+            const element = obj[index];
+            for (var key in element){
+                var value = element[key];
+                if(key == "emp_ID"){
+                    key = Header[1]
+                    col1.push(value)
+                } else if(
+                    key == "Fname"){
+                    key = Header[2]
+                    col2.push(value)
+                }else if(
+                    key == "Lname"){
+                    col3.push(value)
+                }else if(
+                    key == "typeOfEmp"){
+                    key = Header[2]
+                    if(value == fullTimeTypeEmp()){
+                        value = 'Full Time'
+                    }else{
+                        value = 'Casual'
+                    }
+                    col4.push(value);
+                }
+            }
+        }
+    }
+    let scrp = `<link rel="stylesheet"
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    `
+    let style = `<style>h2 {
+        text-align: center;
+        padding: 20px 0;
+      }
+      
+      .table-bordered {
+        border: 1px solid #ddd !important;
+      }
+      
+      table caption {
+          padding: .5em 0;
+      }
+      
+      @media screen and (max-width: 767px) {
+        table caption {
+          display: none;
+        }
+      }
+      
+      .p {
+        text-align: center;
+        padding-top: 140px;
+        font-size: 14px;
+      }</style>`
+    let result = `<html>
+
+    <div class="container">
+    <h2>Table of Employees</h2>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="table-responsive" data-pattern="priority-columns">${scrp}${style}<body><table class="table table-bordered table-hover"><thead class="thead-dark"><tr>
+          `;
+
+    Header.forEach(element => {
+        result += ` 
+        <th scope="col">${element}</th>`
+    });
+
+    result += `</tr></thead><tbody>`
+
+    for (let i = 0; i < col1.length; i++) {
+        
+        result += `<tr><td scope="row">${i+1}</td>`;
+        result += `<td scope="row">${col1[i]}</td>`;
+        result += `<td scope="row">${col2[i] + " " + col3[i]}</td>`;
+        result += `<td scope="row">${col4[i]}</td></tr>`;
+        
+    }
+
+
+
+
+    
+    result += `</tr>`;
+
+    result += `</tbody></table></body></html>`;
+
+    res.send(result);
 }
 exports.update = async (req, res) => {
     var empBody= req.body;
-    const id = empBody.acad_ID;
-    const theOne = await employee.findOneAndUpdate({"emp_ID":id},empBody);
+    const id = empBody.id;
+    var arr = [empBody]
+    let type = empBody.typeOfEmp;
+    let type4Emp;
+        if(type == `Full Time`){
+            console.log("ft")
+            type4Emp = fullTimeTypeEmp()
+        }else if(type == `Casual`){
+            console.log('ca')
+            type4Emp = casualTypeEmp()
+            finalSalary = empBody.netSalary;
+        }
+        console.log(empBody)
+
+        let newEmp = {};
+          
+
+            for (var i = 0; i < arr.length; i++){
+                var obj = arr[i];
+                for (var key in obj){
+                  var value = obj[key];
+                  var newRow = {key:value}
+                  newEmp += newRow;
+                }
+              }
+    const theOne = await employee.findOneAndUpdate({"emp_ID":id},newEmp);
     res.send(theOne);
 }
 exports.delete = async (req, res) => {

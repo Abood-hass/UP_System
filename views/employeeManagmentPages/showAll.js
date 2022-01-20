@@ -2,11 +2,12 @@
     // exports.show =   ()=> {
       // console.log("here");
 
-     function showAllInTable () {
+      exports.showAllInTable =(res) => {
 
       const employee = require( "./../../Models/employees");
       let allemployee =employee.find({});
-      return allemployee;
+      res.render(allemployee)
+      // return allemployee;
   //   let allemployee =employee.find({});
   //   console.log(typeof allemployee)
 

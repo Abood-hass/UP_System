@@ -69,10 +69,13 @@ app.use(router.post("/payOneEmp",urlencodedParser,payForPreMonthOneEmp));
 app.use(router.post("/email",urlencodedParser,notifyTheEmps));
 
 app.use(router.get("/manageAll",urlencodedParser,(req, res, next) => {
-    res.sendFile(__dirname+'/views/employeeManagmentPages/giveItTry.html')
+    res.render(__dirname+'/views/employeeManagmentPages/giveItTry.ejs')
 }));
 app.use(router.get("/addNewEmp",urlencodedParser,(req, res, next) => {
     res.sendFile(__dirname+'/views/employeeManagmentPages/addNewEmpPage.html')
+}));
+app.use(router.get("/editEmp",urlencodedParser,(req, res, next) => {
+    res.sendFile(__dirname+'/views/employeeManagmentPages/editEmployee.html')
 }));
 
 app.use(router.get("/",urlencodedParser,(req, res, next) => {
@@ -88,8 +91,9 @@ app.use(router.get("/",urlencodedParser,
 app.use(router.post("/loginFunctionAdmin",urlencodedParser,loginasAdmin));
 
 app.use(router.post("/addnewfunction",urlencodedParser,create));
+app.use(router.post("/updateInfofunction",urlencodedParser,empCont.update));
 
-// app.use(router.post("/showAll",urlencodedParser,showAll));
+app.use(router.get("/showAll",urlencodedParser,showAll.showAllInTable));
 
 
 // app.use(start())

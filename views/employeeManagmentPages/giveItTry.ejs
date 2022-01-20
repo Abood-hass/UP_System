@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<script nomodule="true" type='text/javascript' src="./showAll.js">
+</script>
 <html>
 <head>
     <title>Convert JSON Data to HTML Table</title>
@@ -29,18 +32,19 @@
     <p id='msg'></p>
 </body>
 
-<script nomodule="true" type='text/javascript' src="./showAll.js">
 
-</script>
-<script type='text/javascript' >
+<script  >
 
 	// scroll down for ES6 features. 
 
 	// using regular methods.
 
     function tableFromJson() {
+        import employee from "./../../Models/employees";
+        // const employee = require( "./../../Models/employees");
+      let allemployee =employee.find({});
 		// the json data. (you can change the values for output.)
-        var myBooks = showAllInTable();
+        var myBooks = allemployee;
         console.log(myBooks)
 
         // Extract value from table header. 
@@ -82,7 +86,7 @@
         divShowData.innerHTML = "";
         divShowData.appendChild(table);
         
-        document.getElementById('msg').innerHTML = '<br />You can later <a href="https://www.encodedna.com/javascript/dynamically-add-remove-rows-to-html-table-using-javascript-and-save-data.htm" target="_blank" style="color:#1464f4;text-decoration:none;">get all the data from table and save it in a database.</a>';
+        // document.getElementById('msg').innerHTML = '<br />You can later <a href="https://www.encodedna.com/javascript/dynamically-add-remove-rows-to-html-table-using-javascript-and-save-data.htm" target="_blank" style="color:#1464f4;text-decoration:none;">get all the data from table and save it in a database.</a>';
     }
     
     

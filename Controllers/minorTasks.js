@@ -9,6 +9,7 @@ const nodemailer = require("nodemailer");
 // const mg = mailgun({apiKey: "b10f78b6aec9197a67ab76fbaaa44f26-0be3b63b-15531cb9", domain: DOMAIN});
 
 let {casualTypeEmp, fullTimeTypeEmp} = require('../Controllers/configVariable/enumTypeValues');
+const holidayLogs = require("../Models/holidayLogs");
 
 
 exports.salCalculator = function (empBody) {
@@ -78,7 +79,7 @@ if(one !== null){
 
 }else{
     
-    
+    await holidayLogs(newHoliday).save()
     await holiDate(newHoliday).save();
     // console.log("hello 2");
     // res.send(newHoliday);
